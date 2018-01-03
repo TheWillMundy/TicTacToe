@@ -37,7 +37,6 @@ const Gameboard = ({changeTile, currentPlayer, gameboard, victory}) => {
   return (
     <GridList cols={3} rows={3} cellHeight={200}>
       {gameboard.map((tile) => {
-        console.log("Changed")
         return (
           <GridTile key={tile.key}>
             <Button style={tileStyle} onClick={() => changeTile(tile.key, currentPlayer)} disabled={isDisabled(tile)}>

@@ -15,7 +15,6 @@ const gameboardReducer = (state={gameboard: [], victory: false}, action) => {
                 counter++
               }
             }
-            console.log(newGameboard)
             return {...state, gameboard:newGameboard}
         case "CHANGE_TILE":
             let changeGameboard = {...state}
@@ -23,14 +22,12 @@ const gameboardReducer = (state={gameboard: [], victory: false}, action) => {
             let tile = changeGameboard[action.key]
             tile = {...tile, mark: action.currentPlayer}
             changeGameboard[action.key] = tile
-            console.log(changeGameboard)
             return {...state, gameboard:changeGameboard}
         case "CHECK_VICTORY":
             let gameboard = state.gameboard
             let victory = true
             let rightDiagFilter = gameboard.filter(tile => (tile.row == tile.col))
             let leftDiagFilter = gameboard.filter(tile => (tile.row == (2 - tile.col)))
-            console.log(leftDiagFilter)
             for (let i = 0; i < 3; i++) {
               let rowFilter = gameboard.filter(tile => (tile.row == i))
               let colFilter = gameboard.filter(tile => (tile.col == i))
