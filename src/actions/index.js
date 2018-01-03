@@ -11,6 +11,7 @@ export const createGameboard = (gameboard) => {
 
 export const changeTile = (key, currentPlayer) => {
     return (dispatch) => {
+        dispatch(previousPlayer(currentPlayer));
         dispatch(changePlayer(currentPlayer));
         return dispatch({
             type: "CHANGE_TILE",
@@ -39,6 +40,15 @@ export const changePlayer = (currentPlayer) => {
         return dispatch({
             type: "CHANGE_PLAYER",
             currentPlayer
+        })
+    }
+}
+
+export const previousPlayer = (player) => {
+    return (dispatch) => {
+        return dispatch({
+            type: "PREVIOUS_PLAYER",
+            player
         })
     }
 }

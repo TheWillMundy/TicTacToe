@@ -64,11 +64,12 @@ const gameboardReducer = (state={gameboard: [], victory: false}, action) => {
     }
 }
 
-const playerReducer = (state={currentPlayer: 'X'}, action) => {
+const playerReducer = (state={currentPlayer: 'X', previousPlayer: ''}, action) => {
     switch(action.type) {
       case "CHANGE_PLAYER":
-        console.log("New Player: " + action.currentPlayer)
         return {...state, currentPlayer: action.currentPlayer}
+      case "PREVIOUS_PLAYER":
+        return {...state, previousPlayer: action.player}
       default:
         return state
     }
