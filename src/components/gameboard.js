@@ -9,7 +9,7 @@ const tileStyle = {
   backgroundColor: "#e53935"
 }
 
-const Gameboard = ({changeTile, currentPlayer, gameboard}) => {
+const Gameboard = ({changeTile, currentPlayer, gameboard, victory}) => {
   
   const setupTile = (tile) => {
     if (tile.mark != "") {
@@ -22,13 +22,25 @@ const Gameboard = ({changeTile, currentPlayer, gameboard}) => {
     }
   }
   
+  const isDisabled = (tile) => {
+    if (victory) {
+      return true
+    }
+    else if (tile.mark == "") {
+      return false
+    }
+    else {
+      return true
+    }
+  }
+  
   return (
     <GridList cols={3} rows={3} cellHeight={200}>
       {gameboard.map((tile) => {
         console.log("Changed")
         return (
           <GridTile key={tile.key}>
-            <Button style={tileStyle} onClick={() => changeTile(tile.key, currentPlayer)} disabled={tile.mark == "" ? false : true}>
+            <Button style={tileStyle} onClick={() => changeTile(tile.key, currentPlayer)} disabled={isDisabled(tile)}>
               {setupTile(tile)}
             </Button>
           </GridTile>

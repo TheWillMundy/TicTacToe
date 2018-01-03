@@ -26,7 +26,42 @@ const gameboardReducer = (state={gameboard: [], victory: false}, action) => {
             console.log(changeGameboard)
             return {...state, gameboard:changeGameboard}
         case "CHECK_VICTORY":
-            
+            let gameboard = state.gameboard
+            let victory = true
+            let rightDiagFilter = gameboard.filter(tile => (tile.row == tile.col))
+            let leftDiagFilter = gameboard.filter(tile => (tile.row == (2 - tile.col)))
+            console.log(leftDiagFilter)
+            for (let i = 0; i < 3; i++) {
+              let rowFilter = gameboard.filter(tile => (tile.row == i))
+              let colFilter = gameboard.filter(tile => (tile.col == i))
+              for (tile in rowFilter) {
+                if (rowFilter[tile].mark == "" || (rowFilter[tile].mark != rowFilter[0].mark)) {
+                  victory = false
+                }
+              }
+              if (victory) return {...state, victory: victory}
+              victory = true
+              for (tile in colFilter) {
+                if (colFilter[tile].mark == "" || (colFilter[tile].mark != colFilter[0].mark)) {
+                  victory = false
+                }
+              }
+              if (victory) return {...state, victory: victory}
+              victory = true
+            }
+            for (tile in rightDiagFilter) {
+              if (rightDiagFilter[tile].mark == "" || (rightDiagFilter[tile].mark != rightDiagFilter[0].mark)) {
+                victory = false
+              }
+            }
+            if (victory) return {...state, victory: victory}
+            victory = true
+            for (tile in leftDiagFilter) {
+              if (leftDiagFilter[tile].mark == "" || (leftDiagFilter[tile].mark != leftDiagFilter[0].mark)) {
+                victory = false
+              }
+            }
+            return {...state, victory: victory}
         default:
             return state
     }

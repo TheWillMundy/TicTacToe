@@ -20,6 +20,14 @@ export const changeTile = (key, currentPlayer) => {
     }
 }
 
+export const checkVictory = () => {
+    return (dispatch) => {
+        return dispatch({
+            type: "CHECK_VICTORY",
+        })
+    }
+}
+
 export const changePlayer = (currentPlayer) => {
     return (dispatch) => {
         if (currentPlayer == 'X') {
