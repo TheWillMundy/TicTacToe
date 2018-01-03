@@ -14,7 +14,7 @@ const TicTacToe = ({changeTile, currentPlayer, gameboard, checkVictory, victory,
   
   return (
     <div style={{'padding': '5vh', 'paddingTop': '0'}}>
-      <h1 style={{'textAlign': 'center'}}>{victory ? <span>Victory: {previousPlayer}</span> : <span>Current Player: {currentPlayer}</span>}</h1>
+      <h1 style={{'textAlign': 'center', 'fontFamily': 'Playfair Display'}}>{victory ? <span>Victory: {previousPlayer}</span> : <span>Current Player: {currentPlayer}</span>}</h1>
       <Gameboard gameboard={gameboard} currentPlayer={currentPlayer} changeTile={changeTile} victory={victory} />
     </div>
   )

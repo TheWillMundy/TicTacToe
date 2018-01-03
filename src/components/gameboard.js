@@ -6,7 +6,7 @@ import Button from 'material-ui/FlatButton'
 const tileStyle = {
   height:"200px",
   width:"30vw",
-  backgroundColor: "#e53935"
+  backgroundColor: "#29B6F6"
 }
 
 const Gameboard = ({changeTile, currentPlayer, gameboard, victory}) => {
